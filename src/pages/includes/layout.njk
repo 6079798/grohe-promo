@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {#<meta name="viewport" content="width=***width***">#}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grohe Promo | {% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="/css/vendor.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+<body class="page">
+{% include 'header.njk' %}
+<main class="page__content">
+    {% block content %}{% endblock %}
+</main>
+{% include 'footer.njk' %}
+<script src="/js/main.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

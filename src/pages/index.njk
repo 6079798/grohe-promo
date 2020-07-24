@@ -1,0 +1,197 @@
+{% extends 'layout.njk' %}
+
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block content %}
+    <section class="banner owl-carousel owl-theme">
+        <img class="banner__slide" src="/img/banner/01.jpg" alt="">
+        <img class="banner__slide" src="/img/banner/01.jpg" alt="">
+        <img class="banner__slide" src="/img/banner/01.jpg" alt="">
+        <img class="banner__slide" src="/img/banner/01.jpg" alt="">
+    </section>
+    <section class="goods">
+        <div class="page__container">
+            <h2 class="title section-title">
+                Популярные товарные разделы
+            </h2>
+            <div class="row owl-carousel owl-theme">
+                {% set items = [
+                    ['01.jpg', 'Смесители'],
+                    ['02.jpg', 'Ванны'],
+                    ['03.jpg', 'Раковины'],
+                    ['04.jpg', 'Полотенцесушители']
+                ] %}
+                {% for item in items %}
+                    <div class="col category">
+                        <a class="category__link" href="#">
+                            <img class="category__cover" src="/img/covers/{{ item[0] }}" alt="{{ item[0] }}">
+                            <h3 class="category__name">{{ item[1] }}</h3>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <h2 class="title section-title">
+                Популярные коллекции
+            </h2>
+            <div class="row owl-carousel">
+                {% set items = [
+                    ['05.jpg', 'Розмари'],
+                    ['06.jpg', 'Клайда'],
+                    ['07.jpg', 'Суон'],
+                    ['08.jpg', 'Контемпорари']
+                ] %}
+                {% for item in items %}
+
+                    <div class="col category">
+                        <a class="category__link" href="#">
+                            <img class="category__cover" src="/img/covers/{{ item[0] }}" alt="{{ item[0] }}">
+                            <h3 class="category__name">{{ item[1] }}</h3>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <h2 class="title section-title">
+                Спец предложения
+            </h2>
+            <div class="row owl-carousel">
+                {% set items = [
+                    {
+                        badges: [['--green', 'Бесплатная доставка'], ['--red', 'Лидер продаж']],
+                        image: '01.jpg',
+                        title: 'Душевая система Lemark Tropic LM7002C',
+                        count: 0,
+                        stars: [0,0,0,0,0],
+                        country: ['cz.png', 'Чехия'],
+                        price: '15 830'
+                    },
+                    {
+                        badges: [['', 'На складе'], ['--red', 'Лидер продаж'], ['--purple', 'Эксклюзив']],
+                        image: '02.jpg',
+                        title: 'Комплект унитаза Geberit Renova Nr.1 203050000 с инсталляцией Geberit Duofix Delta 458.126.00.1',
+                        count: 1,
+                        stars: [1,1,1,1,0],
+                        country: ['ch.png', 'Швейцария'],
+                        price: '20 820'
+                    },
+                    {
+                        badges: [['', 'На складе'], ['--green', 'Бесплатная доставка'], ['--red', 'Лидер продаж']],
+                        image: '03.jpg',
+                        title: 'Комплект унитаза Vitra S 50 5956B003-0101 с инсталляцией Grohe Rapid SL 38772001',
+                        count: 0,
+                        stars: [0,0,0,0,0],
+                        country: ['tr.png', 'Турция'],
+                        price: '18 716'
+                    },
+                    {
+                        badges: [['--green', 'Бесплатная доставка'], ['--red', 'Лидер продаж']],
+                        image: '04.jpg',
+                        title: 'Акриловая ванна Aquanet Bright 180x70',
+                        count: 0,
+                        stars: [0,0,0,0,0],
+                        country: ['ru.png', 'Россия'],
+                        price: '11 199'
+                    }
+                ] %}
+                {% for item in items %}
+                    <div class="col card">
+                        {% if item.badges %}
+                            <ul class="card__badges">
+                                {% for badge in item.badges %}
+                                    <li class="{% if badge[0] %}card__badge card__badge{{ badge[0] }}{% else %}card__badge{% endif %}">{{ badge[1] }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <a class="card__link" href="#">
+                            <img class="card__cover" src="/img/cards/{{ item.image }}" alt="{{ item.title }}"/>
+                        </a>
+                        <div class="card__content">
+                            <div class="card__props">
+                                <div class="card__rating">
+                                    {% for star in item.stars %}
+                                        <span class="{{ 'star star--fill' if star else 'star' }}"></span>
+                                    {% endfor %}
+                                </div>
+                                <span class="card__reviewCount">Отзывов: {{ item.count }}</span>
+                            </div>
+                            <h3 class="card__title"><a href="#">{{ item.title }}</a></h3>
+                            <div class="card__country">
+                                <img src="/img/flags/{{ item.country[0] }}" alt="{{ item.country[1] }}">
+                                <span>{{ item.country[1] }}</span>
+                            </div>
+                            <div class="card__divider"></div>
+                            <p class="card__price">{{ item.price }} руб.</p>
+                        </div>
+                        <div class="card__actions">
+                            <a class="btn card__btn" href="#">Подробнее</a>
+                            <button type="button" class="iconBtn iconBtn--fav card__iconBtn"></button>
+                            <button type="button" class="iconBtn iconBtn--compare card__iconBtn"></button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="info">
+        <div class="page__container">
+            <div class="info__item">
+                <h2 class="title section-title">
+                    Дизайн - название инфоблока
+                </h2>
+                <article class="contentBlock">
+                    <img class="contentBlock__image" src="/img/content/01.jpg" alt="">
+                    <div class="contentBlock__content">
+                        <p>Grohe производит смесители и душевые гарнитуры для ванной комнаты и кухни, автоматические и
+                            электронные смесители общественного и коммерческого назначения, системы инсталляции и смыва
+                            для
+                            подвесной сантехники, системы скрытого настенного монтажа.</p>
+
+                        <p>На долю Grohe AG приходится примерно 8 % мирового рынка.</p>
+
+                        <p>В 2007 году объём продаж выпускаемой Grohe сантехнической арматуры для кухонь, ванн и душа,
+                            автоматической арматуры для коммерческого и общественного секторов, а также инсталляционных
+                            и
+                            смывных систем составил около 1,02 млрд евро.</p>
+
+                        <p>У Grohe 6 производственных площадок, две из которых находятся за рубежом, в частности в
+                            Португалии и
+                            Таиланде. Компания реализует более 82 % выпускаемой продукции за пределами Германии. По
+                            всему
+                            миру
+                            на предприятиях Grohe работает около 5000 человек.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="info__item info__item--hidden">
+                <h2 class="title section-title">
+                    Технологии - название инфоблока 2
+                </h2>
+                <article class="contentBlock contentBlock--hidden">
+                    <img class="contentBlock__image" src="/img/content/01.jpg" alt="">
+                    <div class="contentBlock__content">
+                        <p>Grohe производит смесители и душевые гарнитуры для ванной комнаты и кухни, автоматические и
+                            электронные смесители общественного и коммерческого назначения, системы инсталляции и смыва
+                            для
+                            подвесной сантехники, системы скрытого настенного монтажа.</p>
+
+                        <p>На долю Grohe AG приходится примерно 8 % мирового рынка.</p>
+
+                        <p>В 2007 году объём продаж выпускаемой Grohe сантехнической арматуры для кухонь, ванн и душа,
+                            автоматической арматуры для коммерческого и общественного секторов, а также инсталляционных
+                            и
+                            смывных систем составил около 1,02 млрд евро.</p>
+
+                        <p>У Grohe 6 производственных площадок, две из которых находятся за рубежом, в частности в
+                            Португалии и
+                            Таиланде. Компания реализует более 82 % выпускаемой продукции за пределами Германии. По
+                            всему
+                            миру
+                            на предприятиях Grohe работает около 5000 человек.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}
