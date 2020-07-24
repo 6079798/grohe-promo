@@ -154,7 +154,7 @@
     }
 }
 
-.banner {
+.rotator {
     height: 140px;
     max-width: 1440px;
     margin: 0 auto 20px;
@@ -452,7 +452,6 @@
         margin-bottom: 0;
     }
 
-
     &__image {
         display: block;
         height: 240px;
@@ -464,9 +463,14 @@
         right: 50%;
         width: 100vw;
         margin-bottom: 13px;
+        object-fit: cover;
+
+        @media (--md) {
+            height: 360px;
+        }
+
 
         @media (--lg) {
-            min-height: 360px;
             width: 480px;
             position: static;
             margin-bottom: 0;

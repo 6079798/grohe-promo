@@ -3,3 +3,4 @@ public/
 resources/
 .vercelignore
 .vercel
+src/rev-manifest.json

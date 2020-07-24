@@ -1,6 +1,6 @@
 import owl from "owl.carousel"
 
-$(".banner.owl-carousel").owlCarousel({
+$(".rotator.owl-carousel").owlCarousel({
   dots: false,
   items: 1,
   autoplay: true,
